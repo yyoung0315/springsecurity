@@ -1,0 +1,51 @@
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+ <section>
+<br><br><br><br> 
+<div align=center> 
+
+<h1> 로그인 성공   </h1>
+<h2> ( 로그인  인증을 성공 하였습니다. ) </h2>
+
+<div th:text="${#authentication.name}"></div>
+<div th:text="${#authentication.authorities}"></div>
+<div th:text="${#authentication.authenticated}"></div>
+
+<hr width=50%>
+
+<div th:if="${#authorization.expression('hasRole(''ROLE_MANAGER'')')}">
+  This will only be displayed if authenticated user has role ROLE_MANAGER.
+</div>
+
+
+<div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+  This will only be displayed if authenticated user has role ROLE_ADMIN.
+</div>
+
+<div th:if="${#authorization.expression('hasRole(''ROLE_MEMBER'')')}">
+  This will only be displayed if authenticated user has role ROLE_MEMBER.
+</div>
+
+<hr width=50%>
+
+<a href="/guestbook/guestbookList.do"> (로그인사용자 모두) </a><br><br> <br><br>
+<a href="/manager/managerList.do">매니저만 접근</a><br><br><br><br>
+<a href="/admin/adminList.do">관리자만 접근</a><br><br><br><br>
+<a href="everyone/everyone.do">누구나</a><br><br>
+
+<form action="logout"   method="get">
+  <input  type="submit"  value="로그아웃" >
+</form>
+
+</div>
+</section>
+
+</body>
+</html>
+</body>
+</html>

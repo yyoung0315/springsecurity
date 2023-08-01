@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+ <mapper namespace="com.young.y1.login.LoginDao">
+ 	<select id="loginOK" resultType="com.young.y1.login.LoginVO" parameterType="com.young.y1.login.LoginVO">
+ 	<!-- id만 비교해야함 패스워드는 하면 안됨 -->
+ 		select id as username, name,password,role from member where id=#{username}
+ 	</select>
+ </mapper>
