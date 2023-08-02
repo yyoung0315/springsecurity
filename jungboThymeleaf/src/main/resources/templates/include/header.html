@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment="header">
+		<div class="header__title">
+			<h1>골프연습장 회원관리 ver1.0</h1>	
+		</div>
+		<nav>
+			<ul class="header__ul">
+				<li><a href="/teacherList.do">강사조회</a></li>
+				<li><a href="/form/memberForm.html">수강신청</a></li>
+				<li><a href="">회원정보조회</a></li>
+				<li><a href="">강사매출현황</a></li>
+				<li><a href="index.do">홈으로</a></li>
+			</ul>
+		</nav>
+	</div>
+</body>
+</html>
