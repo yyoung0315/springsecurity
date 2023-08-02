@@ -17,10 +17,36 @@ public class JungboController {
 	@Autowired
 	private ServletContext servlet;
 	
+	
+	@RequestMapping("index.do")
+	void index() {}
+	
+	
 	@RequestMapping("teacherList.do")
 	String teacherList(TeacherVO vo , Model model ) {
 		model.addAttribute("li",service.teacherList(vo));
 		return "teacher/teacherList.html";
 	}
 	
+	@RequestMapping("memberForm.do")
+	String memberForm() {
+		return "/form/memberForm.html";
+	}
+	
+	@RequestMapping("memberInsert.do")
+	String memberInsert() {
+		return "index.html";
+	}
+	
+	@RequestMapping("memberList.do")
+	String memberList(TeacherVO vo , Model model ) {
+		model.addAttribute("li",service.memberList(vo));
+		return "member/memberList.html";
+	}
+	
+	@RequestMapping("teacherMoney.do")
+	String teacherMoney(TeacherVO vo , Model model ) {
+		model.addAttribute("li",service.teacherMoney(vo));
+		return "teacher/teacherMoney.html";
+	}
 }

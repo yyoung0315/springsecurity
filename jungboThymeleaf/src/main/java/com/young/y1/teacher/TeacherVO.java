@@ -8,6 +8,7 @@ public class TeacherVO {
 	 private String teacher_name;
 	 private String class_name;
 	 private int class_price;
+	 private int summoney;
 	 private String teacher_regist_date;
 	 
 	 private String c_no ;

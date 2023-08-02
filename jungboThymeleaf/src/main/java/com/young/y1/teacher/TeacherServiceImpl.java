@@ -17,5 +17,23 @@ public class TeacherServiceImpl implements TeacherService{
 		return dao.teacherList(vo);
 	}
 
+	@Override
+	public void memberInsert(TeacherVO vo) {
+		dao.memberInsert(vo);
+		
+	}
+
+	@Override
+	public List<TeacherVO> memberList(TeacherVO vo) {
+		// TODO Auto-generated method stub
+		return dao.memberList(vo);
+	}
+
+	@Override
+	public List<TeacherVO> teacherMoney(TeacherVO vo) {
+		// TODO Auto-generated method stub
+		return dao.teacherMoney(vo);
+	}
+
 
 }

@@ -1,0 +1,38 @@
+<html xmlns="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="/css/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div th:replace="include/header::header"></div>
+<section class="main">
+    <div align="center"><br>
+        <h1>회원정보조회</h1>
+        <table>
+            <tr>
+                <td>수강월</td>
+                <td>회원번호</td>
+                <td>회원명</td>
+                <td>강의명</td>
+                <td>강의장소</td>
+                <td>수강료</td>
+                <td>등급</td>
+            </tr>
+            <tr th:each="m : ${li}">
+                <td align="center" th:text="|${#strings.substring(m.regist_month, 0, 4)}년${#strings.substring(m.regist_month, 4, 6)}월|" />
+                <td th:text="${m.c_no}"></td>
+                <td th:text="${m.c_name}"></td>
+                <td th:text="${m.class_name}"></td>
+                <td th:text="${m.class_area}"></td>
+                <td data-th-text="${m.c_no > 20000 ? #numbers.formatInteger(m.class_price * 0.5, 3, 'COMMA') : #numbers.formatInteger(m.class_price, 3, 'COMMA')}"></td>
+                <td th:text="${m.grade}"></td>
+            </tr>
+        </table>
+    </div>
+</section>
+	</div>
+	<div th:replace="include/footer::footer"></div>
+</body>
+
+</html>

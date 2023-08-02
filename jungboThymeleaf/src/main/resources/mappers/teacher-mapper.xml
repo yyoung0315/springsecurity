@@ -5,7 +5,24 @@
 
 <mapper namespace="com.young.y1.teacher.TeacherDao">
 
+	<insert id="memberInsert" parameterType="com.young.y1.teacher.TeacherVO">
+		
+	</insert>
 	<select id="teacherList" resultType="com.young.y1.teacher.TeacherVO" parameterType="com.young.y1.teacher.TeacherVO">
 		select * from tbl_teacher_202201 
 	</select>
+	
+	<select id="memberList" resultType="com.young.y1.teacher.TeacherVO" parameterType="com.young.y1.teacher.TeacherVO">
+		select C.Regist_Month,C.C_No,M.C_Name,T.Class_Name,C.Class_Area,T.Class_Price,M.Grade from tbl_class_202201 c join tbl_member_202201 m 
+		on c.c_no = m.c_no join tbl_teacher_202201 t
+		on c.teacher_code = t.teacher_code 
+	</select>
+	
+	<select id="teacherMoney" resultType="com.young.y1.teacher.TeacherVO" parameterType="com.young.y1.teacher.TeacherVO">
+		select m.Teacher_Code,T.Class_Name,T.Teacher_Name,M.Summoney from tbl_teacher_202201 t 
+		join money_view m
+		on t.teacher_code = m.teacher_code
+	</select>
+	
+	
 </mapper>
