@@ -74,6 +74,8 @@ table,tr,td{
 td{
 	padding: 10px;
 }
-
+ .won-sign:before {
+    content: "₩";
+  }
 
 

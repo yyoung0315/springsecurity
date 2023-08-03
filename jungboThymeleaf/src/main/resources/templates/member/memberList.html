@@ -25,7 +25,7 @@
                 <td th:text="${m.c_name}"></td>
                 <td th:text="${m.class_name}"></td>
                 <td th:text="${m.class_area}"></td>
-                <td data-th-text="${m.c_no > 20000 ? #numbers.formatInteger(m.class_price * 0.5, 3, 'COMMA') : #numbers.formatInteger(m.class_price, 3, 'COMMA')}"></td>
+                <td data-th-text="${#numbers.formatInteger(m.class_price, 3, 'COMMA')}"class="won-sign"></td>
                 <td th:text="${m.grade}"></td>
             </tr>
         </table>

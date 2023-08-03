@@ -6,7 +6,7 @@
 <mapper namespace="com.young.y1.teacher.TeacherDao">
 
 	<insert id="memberInsert" parameterType="com.young.y1.teacher.TeacherVO">
-		
+		insert into tbl_class_202201 values(#{regist_month},#{c_no},#{class_area},#{tution},#{teacher_code})
 	</insert>
 	<select id="teacherList" resultType="com.young.y1.teacher.TeacherVO" parameterType="com.young.y1.teacher.TeacherVO">
 		select * from tbl_teacher_202201 

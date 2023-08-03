@@ -21,7 +21,7 @@
                 <td th:text="${m.teacher_code}"></td>
                 <td th:text="${m.teacher_name}"></td>
                 <td th:text="${m.class_name}"></td>
-                <td data-th-text="${#numbers.formatInteger(m.class_price, 3, 'COMMA') + '원'}"></td>
+                <td data-th-text="${#numbers.formatInteger(m.class_price, 3, 'COMMA')}"class="won-sign"></td>
                 <td align="center" th:text="|${#strings.substring(m.teacher_regist_date, 0, 4)}년${#strings.substring(m.teacher_regist_date, 4, 6)}월${#strings.substring(m.teacher_regist_date, 6, 8)}일|" />
             </tr>
         </table>

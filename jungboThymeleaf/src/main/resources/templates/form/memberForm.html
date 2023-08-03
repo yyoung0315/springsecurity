@@ -4,6 +4,47 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="/css/styles.css" rel="stylesheet" type="text/css">
+<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+	
+ function btn_reset(){
+	alert("모든 정보를 지우고 처음부터 다시 입력합니다!");
+	document.getElementById("first").focus();
+	return false;
+ }
+ 
+ function cltno(cnoValue) {
+  const c_noInput = document.getElementById('c_no');
+  	c_noInput.value = cnoValue;
+}
+
+ function cltprice(priceValue) {
+	const c_noInput = document.getElementById('c_no');
+	const class_priceInput = document.getElementById('class_price');
+  	const c_noval = c_noInput.value
+  	if(c_noval >= 20000){
+		  class_priceInput.value = priceValue / 2;
+	  }else{
+		  class_priceInput.value = priceValue;
+	  }	  
+}
+
+$(function () {
+	$("input[type=button]").click(function () {
+		var isRight = true;
+		$("#frm").find("input[type=text]").each(function (index, item) {
+			// 아무값없이 띄어쓰기만 있을 때도 빈 값으로 체크되도록 trim() 함수 호출
+			if ($(this).val().trim() == '') {
+				alert($(this).attr("data-name") + " 항목을 입력하세요.");
+				$(this).focus();
+				isRight = false;
+				return false;
+			}
+		});
+	});
+
+});
+ </script>
 </head>
 
 <body>
@@ -11,11 +52,11 @@
 	<section class="main">
 		<div align="center"><br>
 			<h1>수강신청</h1>
-			<form action="">
+			<form id="frm">
 			<table width="600px">
 				<tr>
 					<td>수강월</td>
-					<td><input type="text" name="regist_month">예) 2022년03월 → 202203</td>
+					<td><input type="text" name="regist_month" data-name="수강월">예) 2022년03월 → 202203</td>
 				</tr>
 				<tr>
 					<td>회원명</td>
@@ -32,31 +73,34 @@
 				</tr>
 				<tr>
 					<td>회원번호</td>
-					<td><input id="c_no" name="c_no" readonly>예)10001</td>
+					<td><input id="c_no" name="c_no" readonly  >예)10001</td>
 				</tr>
 				<tr>
 					<td>강의장소</td>
-					<td><input type="text" name="class_area"></td>
+					<td><input type="text" name="class_area" data-name="강의장소"></td>
 				</tr>
 				<tr>
 					<td>강의명</td>
-					<td><select name="class_name">
-						<option>=== 강의신청 ===</option>
-						<option>초급반</option>
-						<option>중급반</option>
-						<option>고급반</option>
-						<option>심화반</option>
+					<td>
+						<select name="class_name" onchange="cltprice(this.value)">
+							<option>=== 강의신청 ===</option>
+							<option value="100000">초급반</option>
+							<option value="200000">중급반</option>
+							<option value="300000">고급반</option>
+							<option value="400000">심화반</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>수강료</td>
-					<td><input type="text" name="class_price">원</td>
+					<td><input type="text" name="class_price" id="class_price" readonly>원</td>
 				</tr>
 				
 				<tr>
-					<td colspan="2" align="center"><input type="submit" value="수강신청">
-					<input type="reset" value="다시쓰기"></td>
+					<td colspan="2" align="center">
+						<input type="button" value="수강신청" >
+						<input type="reset" value="다시쓰기" onclick="btn_reset()">
+					</td>
 				</tr>
 			</table>
 			</form>
@@ -65,5 +109,4 @@
 	</div>
 	<div th:replace="include/footer::footer"></div>
 </body>
-
 </html>
