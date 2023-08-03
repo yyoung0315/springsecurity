@@ -34,7 +34,9 @@ public class JungboController {
 	}
 	
 	@RequestMapping("memberInsert.do")
-	String memberInsert() {
+	String memberInsert(TeacherVO vo) {
+		
+		service.memberInsert(vo);
 		return "index.html";
 	}
 	
